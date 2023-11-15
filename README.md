@@ -1,5 +1,10 @@
 # Repository for LLM intro session
 
+This repository should give attendees an overview of the LLM development ecosystem and should demonstrate how to solve basic use cases with the appropriate tools. The intention is to use the Azure OpenAI service as an LLM an to vary the different frameworks available to build usecases.
+An overview about tools and frameworks could be found here:
+![Overview of LLM development landscape from twitter.com](https://pbs.twimg.com/media/F9YsiGQboAISlLm?format=jpg&name=large)
+(source: <https://twitter.com/chiefaioffice/status/1717614624793927972/photo/1>)
+
 ## Sample 1: ChatGPT clone with OpenAI and Streamlit
 
 To demonstrate, how OpenAI and Streamlit work together to give you visual access to an Azure OpenAI service instance, please review deep-dive-openai.py
@@ -13,6 +18,12 @@ The script needs the following .env variables:
 - AZURE_OAI_BASE_URL (your Azure OpenAI service deployment in the format of https://{YOUR-TENANT-HERE}.openai.azure.com)
 - AZURE_OAI_KEY (your Azure OpenAI key)
 - AZURE_OAI_DEPLOYMENTNAME (your Azure OpenAI deployment)
+
+To run the sample use:
+
+```powershell
+streamlit run 1-deep-dive-openai.py
+```
 
 The file was inspired by: https://github.com/microsoft/az-oai-chatgpt-streamlit-harness
 
@@ -31,5 +42,11 @@ The script needs the following .env variables:
 - AZURE_OAI_DEPLOYMENTNAME (your Azure OpenAI deployment)
 - AZURE_OAI_EMBEDDINGMODELL (your Azure OpenAI text embedding deployment)
 - RAG_FILENAME (the path to your PDF file containing the knowledge for the RAG application)
+
+To run the sample use:
+
+```powershell
+streamlit run 2-deep-dive-langchain-rag.py
+```
 
 The file was inspired by: https://github.com/yvann-ba/Robby-chatbot
