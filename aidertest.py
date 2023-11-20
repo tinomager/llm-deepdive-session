@@ -7,3 +7,11 @@ def read_pdf_text(filename):
         for page_num in range(pdf_reader.numPages):
             text += pdf_reader.getPage(page_num).extractText()
     return text
+
+def main():
+    filename = "demo.pdf"
+    text = read_pdf_text(filename)
+    print(text)
+
+if __name__ == '__main__':
+    main()
