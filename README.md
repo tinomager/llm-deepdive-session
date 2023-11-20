@@ -28,7 +28,7 @@ To use Aider, install it with pip:
 pip install aider-chat
 ```
 
-To use Aider with Azure OpenAI Service, create a .aider.conf.yml file in your root Git directory and add the following values:
+To use Aider with Azure OpenAI Service, create a .aider.conf.yml file in your root Git directory (add it to .gitignore)  and add the following values:
 
 ```powershell
 openai-api-type: azure
@@ -37,6 +37,11 @@ openai-api-base: https://{YOUR-API-ENDPOINT}.openai.azure.com
 openai-api-version: 2023-05-15
 openai-api-deployment-id: {YOUR-DEPLOYMENT-NAME}
 ```
+
+Aider helps you with basic coding tasks like code generation, code optimization, documentation, etc on a command line interface and with full Git integration. This repository contains the file aider-demo.py that was completly generated with the help of Aider. The following steps lead to the file:
+
+![Step1 aider-demo.py file generation](./pictures/aider-demo-1.png)
+![Step2 aider-demo.py file generation](./pictures/aider-demo-2.png)
 
 ## Sample 1: ChatGPT clone with OpenAI and Streamlit
 
