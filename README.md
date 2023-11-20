@@ -5,6 +5,39 @@ An overview about tools and frameworks could be found here:
 ![Overview of LLM development landscape from twitter.com](https://pbs.twimg.com/media/F9YsiGQboAISlLm?format=jpg&name=large)
 (source: <https://twitter.com/chiefaioffice/status/1717614624793927972/photo/1>)
 
+## Coding with AI assistance
+
+### VS Code plugin
+
+One option to integrate coding assistance is to load the VSCode OpenAI plugin from:
+<https://marketplace.visualstudio.com/items?itemName=AndrewButson.vscode-openai>. The plugin supports OpenAI and Azure OpenAI Service endpoints and can be configured easily for source code optimizations or chat with the LLM for code generation.
+
+Interesting features of the plugin are e.g. chat for source code generation or source code optimization / comments:
+
+- Plugin options ![VSCode palette for chat menu](./pictures/vscode-openai-palette.png)
+- Chat view for code generation: ![VSCode chat view for codegeneration](./pictures/vscode-openai-chat.png)
+- Menu options per file for optimization ![VSCode menu für source code optimization](./pictures/vscode-openai-menu.png)
+
+### Aider
+
+Aider is a commandline based tool to help you with coding tasks.
+
+To use Aider, install it with pip:
+
+```powershell
+pip install aider-chat
+```
+
+To use Aider with Azure OpenAI Service, create a .aider.conf.yml file in your root Git directory and add the following values:
+
+```powershell
+openai-api-type: azure
+openai-api-key: {YOUR-AZURE-KEY}
+openai-api-base: https://{YOUR-API-ENDPOINT}.openai.azure.com
+openai-api-version: 2023-05-15
+openai-api-deployment-id: {YOUR-DEPLOYMENT-NAME}
+```
+
 ## Sample 1: ChatGPT clone with OpenAI and Streamlit
 
 To demonstrate, how OpenAI and Streamlit work together to give you visual access to an Azure OpenAI service instance, please review deep-dive-openai.py
