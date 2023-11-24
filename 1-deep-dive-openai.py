@@ -31,7 +31,7 @@ def generate_response(prompt):
         completion = openai.ChatCompletion.create(
             engine=ENV["AZURE_OAI_DEPLOYMENTNAME"],
             messages=st.session_state["messages"],
-            
+            temperature = 0.7
         )
         response = completion.choices[0].message.content
     except openai.error.APIError as e:

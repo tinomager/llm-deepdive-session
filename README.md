@@ -45,7 +45,7 @@ Aider helps you with basic coding tasks like code generation, code optimization,
 
 ## Sample 1: ChatGPT clone with OpenAI and Streamlit
 
-To demonstrate, how OpenAI and Streamlit work together to give you visual access to an Azure OpenAI service instance, please review deep-dive-openai.py
+To demonstrate, how OpenAI and Streamlit work together to give you visual access to an Azure OpenAI service instance, please review deep-dive-openai.py. With the OpenAI SDK you can control the parameters of the model call, including the temperature value (from 0 with less creativity to 1 with high creativity and hallucination risk)
 
 Within this solution Streamlit acts as a web server that generates a web frontend for the user. When the user inputs its text to the input textbox, this questions is sent to Azure OpenAI service through the Open AI Python SDK. The response and all previous messages were managed by the application to and sent as the history to the service.
 
@@ -63,7 +63,7 @@ To run the sample use:
 streamlit run 1-deep-dive-openai.py
 ```
 
-The file was inspired by: https://github.com/microsoft/az-oai-chatgpt-streamlit-harness
+The file was inspired by: <https://github.com/microsoft/az-oai-chatgpt-streamlit-harness>
 
 ## Sample 2: Chat with your PDF with Langchain and Streamlit
 
@@ -87,4 +87,20 @@ To run the sample use:
 streamlit run 2-deep-dive-langchain-rag.py
 ```
 
-The file was inspired by: https://github.com/yvann-ba/Robby-chatbot
+The file was inspired by: <https://github.com/yvann-ba/Robby-chatbot>
+
+## Sample 3: Chat with your PDF with Haystack and Huggingface models
+
+Sample 2 with Langchain uses the models from OpenAI from Azure OpenAI service and simply relies on Embedding Search for the RAG approach. For some use cases smaller or specialized models and a hybrid RAG search approach can enhace RAG performance.
+
+For this we use the Haystack framework to build a hybrid retrieval pipeline that consists of a document store and a retrieval pipeline. The document store is filled with data from a PDF file, that is preprocessed by chunking the whole document in smaller portions of the content. The document store is the basis for a BM25 sparse retriever (classical search by keywords) and a dense retriever doing vector search with an embedding model loaded from Huggingface (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>). The search results of both retrievers is in the pipeline combined via a document join and then the result is reranked and filtered by another Huggingface model (<https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-6-v2>). The result is an ordered list of document chunks, sorted by relevance with their relevance score. This collection of document chunks is then finally injected in a GPT3.5 Turbo prompt via the Promptnode. As the result of this pipeline the LLM response is then sent back.
+
+For the visualization of the user interaction we use Gradio this time. Gradio is another UI framework like Streamlit, but very easy to use. Important to know when you want to use Gradio and Haystack together in the same application is that the latest versions of both frameworks were not compatible with each other. For me the version 1.22.1 of farm-haystack and Gradio version 3.50.2 work together.
+
+![solution setup of the haystack script](./pictures/3-haystack.drawio.png)
+
+To run the sample use:
+
+```powershell
+python 3-deep-dive-haystack.py
+```
