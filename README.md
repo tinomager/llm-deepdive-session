@@ -1,22 +1,28 @@
 # Repository for LLM intro session
 
-This repository should give attendees an overview of the LLM development ecosystem and should demonstrate how to solve basic use cases with the appropriate tools. The intention is to use the Azure OpenAI service as an LLM an to vary the different frameworks available to build usecases.
-An overview about tools and frameworks could be found here:
+This repository should give attendees an overview of the LLM development ecosystem and should demonstrate how to solve basic use cases with the appropriate tools. The intention is to use the Azure OpenAI service as an LLM and to vary the different frameworks available to build usecases.
+
+An overview of tools and frameworks could be found here:
 ![Overview of LLM development landscape from twitter.com](https://pbs.twimg.com/media/F9YsiGQboAISlLm?format=jpg&name=large)
 (source: <https://twitter.com/chiefaioffice/status/1717614624793927972/photo/1>)
+
+Before we dive into the possibilities of how we can code our own applications that uses LLMs and models, we should first have a look at how those models can help use to write this application code. So we will frist have a look at "Coding with AI assistance".
 
 ## Coding with AI assistance
 
 ### VS Code plugin
 
-One option to integrate coding assistance is to load the VSCode OpenAI plugin from:
+One option to integrate coding assistance into your VSCode environment is to load the VSCode OpenAI plugin from:
 <https://marketplace.visualstudio.com/items?itemName=AndrewButson.vscode-openai>. The plugin supports OpenAI and Azure OpenAI Service endpoints and can be configured easily for source code optimizations or chat with the LLM for code generation.
 
 Interesting features of the plugin are e.g. chat for source code generation or source code optimization / comments:
 
-- Plugin options ![VSCode palette for chat menu](./pictures/vscode-openai-palette.png)
-- Chat view for code generation: ![VSCode chat view for codegeneration](./pictures/vscode-openai-chat.png)
-- Menu options per file for optimization ![VSCode menu für source code optimization](./pictures/vscode-openai-menu.png)
+- Plugin options
+![VSCode palette for chat menu](./pictures/vscode-openai-palette.png)
+- Chat view for code generation
+![VSCode chat view for codegeneration](./pictures/vscode-openai-chat.png)
+- Menu options per file for optimization
+![VSCode menu für source code optimization](./pictures/vscode-openai-menu.png)
 
 ### Aider
 
@@ -38,10 +44,20 @@ openai-api-version: 2023-05-15
 openai-api-deployment-id: {YOUR-DEPLOYMENT-NAME}
 ```
 
-Aider helps you with basic coding tasks like code generation, code optimization, documentation, etc on a command line interface and with full Git integration. This repository contains the file aider-demo.py that was completly generated with the help of Aider. The following steps lead to the file:
+Aider helps you with basic coding tasks like code generation, code optimization, documentation, etc on a command line interface and with full Git integration. This repository contains the file aider-demo.py that was completly generated with the help of Aider. The following steps created the sample file:
 
 ![Step1 aider-demo.py file generation](./pictures/aider-demo-1.png)
 ![Step2 aider-demo.py file generation](./pictures/aider-demo-2.png)
+
+## Step 0: The basics
+
+To understand how a LLM as a mathematical model can work with text data, the file 0-basics.py shows, how we can utilize embedding models to convert a sequence of words of variable lenght to a representative embedding vector with a fixed lenght (or dimension). This embedding vector represents the full semantics of the text and similitary with other text passages can be mathmatically evaluated by calculating the cosine similarity. In the sample file this is demonstrated with the text embedding model from Azure OpenAI service. To calculate the similarity between the texts the cosine similarity is used since this is the suggest method from OpenAI for their embeddings. The higher the cosine similarity in comparision to other scores is, the higher is also the relation between the two text.
+
+To run the sample and sea the calculations run
+
+```powershell
+python 0-basics.py
+```
 
 ## Sample 1: ChatGPT clone with OpenAI and Streamlit
 

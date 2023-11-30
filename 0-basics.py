@@ -29,9 +29,9 @@ embedding1 = np.array(response['data'][0]['embedding'])
 embedding2 = np.array(response['data'][1]['embedding'])
 embedding3 = np.array(response['data'][2]['embedding'])
 
-print(f'Embedding vector of 1: {embedding1}')
-print(f'Embedding vector of 2: {embedding2}')
-print(f'Embedding vector of 3: {embedding3}')
+print(f'Embedding vector 1 of text "{sentence1}": {embedding1}')
+print(f'Embedding vector 2 of text "{sentence2}": {embedding2}')
+print(f'Embedding vector 3 of text "{sentence3}": {embedding3}')
 
 similarity12 = cosine_similarity(embedding1.reshape(1, -1), embedding2.reshape(1, -1))[0][0]
 similarity13 = cosine_similarity(embedding1.reshape(1, -1), embedding3.reshape(1, -1))[0][0]
@@ -39,4 +39,4 @@ similarity23 = cosine_similarity(embedding2.reshape(1, -1), embedding3.reshape(1
 
 print(f'Similarity of 1 & 2: {similarity12}')
 print(f'Similarity of 1 & 3: {similarity13}')
-print(f'Similarity of 2 & 3: {similarity13}')
+print(f'Similarity of 2 & 3: {similarity23}')
