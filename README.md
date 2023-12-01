@@ -53,6 +53,10 @@ Aider helps you with basic coding tasks like code generation, code optimization,
 
 To understand how a LLM as a mathematical model can work with text data, the file 0-basics.py shows, how we can utilize embedding models to convert a sequence of words of variable lenght to a representative embedding vector with a fixed lenght (or dimension). This embedding vector represents the full semantics of the text and similitary with other text passages can be mathmatically evaluated by calculating the cosine similarity. In the sample file this is demonstrated with the text embedding model from Azure OpenAI service. To calculate the similarity between the texts the cosine similarity is used since this is the suggest method from OpenAI for their embeddings. The higher the cosine similarity in comparision to other scores is, the higher is also the relation between the two text.
 
+The following picture from Wikipedia shows the way, how cosine similarity work:
+![Wikipedia cosine similarity](https://upload.wikimedia.org/wikipedia/commons/2/23/CosineSimilarity.png)
+Source: <https://upload.wikimedia.org/wikipedia/commons/2/23/CosineSimilarity.png>
+
 To run the sample and sea the calculations run
 
 ```powershell
