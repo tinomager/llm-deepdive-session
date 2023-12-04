@@ -2,11 +2,23 @@
 
 This repository should give attendees an overview of the LLM development ecosystem and should demonstrate how to solve basic use cases with the appropriate tools. The intention is to use the Azure OpenAI service as an LLM and to vary the different frameworks available to build usecases.
 
+Before running the code samples use the following command to install all dependencies at once or review the samples and install the desired dependencies by yourself:
+
+```powershell
+pip install -r requirements.txt
+```
+
 An overview of tools and frameworks could be found here:
 ![Overview of LLM development landscape from twitter.com](https://pbs.twimg.com/media/F9YsiGQboAISlLm?format=jpg&name=large)
 (source: <https://twitter.com/chiefaioffice/status/1717614624793927972/photo/1>)
 
 Before we dive into the possibilities of how we can code our own applications that uses LLMs and models, we should first have a look at how those models can help use to write this application code. So we will frist have a look at "Coding with AI assistance".
+
+> **_NOTE:_**  Before running the code samples use the following command to install all dependencies at once or review the samples and install the desired dependencies by yourself. Please consider creating a virtual environment because some packages could conflict with packages that you might have installed. For usage of of venvs in Python see <https://realpython.com/python-virtual-environments-a-primer/#how-can-you-work-with-a-python-virtual-environment>:
+
+```powershell
+pip install -r requirements.txt
+```
 
 ## Coding with AI assistance
 
