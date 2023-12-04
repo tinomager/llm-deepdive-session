@@ -2,12 +2,6 @@
 
 This repository should give attendees an overview of the LLM development ecosystem and should demonstrate how to solve basic use cases with the appropriate tools. The intention is to use the Azure OpenAI service as an LLM and to vary the different frameworks available to build usecases.
 
-Before running the code samples use the following command to install all dependencies at once or review the samples and install the desired dependencies by yourself:
-
-```powershell
-pip install -r requirements.txt
-```
-
 An overview of tools and frameworks could be found here:
 ![Overview of LLM development landscape from twitter.com](https://pbs.twimg.com/media/F9YsiGQboAISlLm?format=jpg&name=large)
 (source: <https://twitter.com/chiefaioffice/status/1717614624793927972/photo/1>)
