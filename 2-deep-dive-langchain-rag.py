@@ -1,12 +1,8 @@
 import streamlit as st
 from streamlit_chat import message
 import dotenv
-import openai
 import os
 from langchain.vectorstores import FAISS
-from llama_index.llms import AzureOpenAI
-from llama_index import ServiceContext
-from llama_index import set_global_service_context
 from langchain.chat_models import AzureChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders import PyPDFLoader
@@ -22,24 +18,16 @@ api_version = "2023-05-15"
 deployment_name = ENV["AZURE_OAI_DEPLOYMENTNAME"] 
 embedding_name = ENV["AZURE_OAI_EMBEDDINGMODELL"]
 
-openai.api_version = api_version
-openai.api_base = api_base
-openai.api_key = api_key
-openai.api_type = api_type
-
-llm = AzureOpenAI(
-    model="gpt-35-turbo",
-    engine=deployment_name,
-    api_key=api_key,
-    api_base=api_base,
-    api_type=api_type,
-    api_version=api_version,
-)
-
 os.environ["AZURE_OPENAI_API_KEY"] = api_key
 os.environ["AZURE_OPENAI_ENDPOINT"] = api_base
 os.environ["OPENAI_API_BASE"] = api_base 
 os.environ["OPENAI_API_VERSION"] = api_version
+
+llm = AzureChatOpenAI(
+    azure_deployment=deployment_name,
+    openai_api_version=api_version,
+    model_name="gpt-35-turbo"
+)
 
 embed_model = OpenAIEmbeddings(model='text-embedding-ada-002',
                               deployment=embedding_name,
@@ -48,12 +36,6 @@ embed_model = OpenAIEmbeddings(model='text-embedding-ada-002',
                               openai_api_key=api_key,
                               chunk_size=1)
 
-service_context = ServiceContext.from_defaults(
-    llm=llm,
-    embed_model=embed_model
-)
-
-set_global_service_context(service_context)
 
 #load docs
 def load_docs(file):
